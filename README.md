@@ -6,7 +6,7 @@ The terms of the license can be checked here: [http://opensource.org/licenses/RP
 
 ## What is RHme+
 
-The RHme+ (Riscure Hack me ) is a low level hardware challenge that comes in the form of an Arduino board. It was launched during BlackHat Amsterdam in 2015. The winners of the first edition were announced on 18th of January 2015. The writeups together with the interview of the winners can be found from March 1 at the [official challenge website](www.riscure.com/challenge). Source of the challenge will be also released in March.
+The RHme+ (Riscure Hack me ) is a low level hardware challenge that comes in the form of an Arduino board. It was launched during BlackHat Amsterdam in 2015. The winners of the first edition were announced on 18th of January 2015. The writeups together with the interview of the winners can be found from March 1 at the [official challenge website](http://www.riscure.com/challenge). Source of the challenge will be also released in March.
  
 Use your weapon of choice to extract the flags. We have no preference and we are curious to see where your creativity and skill will take you! Just be sure to have fun! ;-)
 We estimate the difficulty level to be moderate. If you like these challenges and you would like more, let us know. Get in touch with us via twitter (#riscure #rhme+) or send us an email at challenge. at. riscure.com
@@ -28,10 +28,10 @@ You need to install the RHme+ firmware into a target. The "official" target for 
 **Untested devices that might work**
 - LilyPad Arduino: It runs at 8MHz instead of 16MHz, so the timing-dependent attacks could be affected
 
-For other Arduino-based targets, you can check the [Wikipedia](https://en.wikipedia.org/wiki/List_of_Arduino_boards_and_compatible_systems). Any board based in ATmega328P is potentially able to run the firmware unless that the UARTs or analog inputs of the ATmega are connected to another chip (e.g. a Bluetooth or Zigbee module).
+For other Arduino-based targets, you can check the [Wikipedia](http://en.wikipedia.org/wiki/List_of_Arduino_boards_and_compatible_systems). Any board based in ATmega328P is potentially able to run the firmware unless that the UARTs or analog inputs of the ATmega are connected to another chip (e.g. a Bluetooth or Zigbee module).
 
 ###### Burning the firmware into the target
-You need to burn the file binary\ctf.hex into the ATmega overwriting Arduino bootloader. For that you need an external AVR-ISP programmer. Is up to you to find a suitable programmer and the instructions to use it. You can even use another Arduino and use it as an AVR-ISP programmer. Follow [this instructions](https://www.arduino.cc/en/Tutorial/ArduinoISP) to prepare another Arduino as a ISP programmer and follow [this](https://learn.adafruit.com/arduino-tips-tricks-and-techniques/arduinoisp#bonus-using-with-avrdude) to burn the RHme+ firmware in your target.
+You need to burn the file binary\ctf.hex into the ATmega overwriting Arduino bootloader. For that you need an external AVR-ISP programmer. Is up to you to find a suitable programmer and the instructions to use it. You can even use another Arduino and use it as an AVR-ISP programmer. Follow [this instructions](http://www.arduino.cc/en/Tutorial/ArduinoISP) to prepare another Arduino as a ISP programmer and follow [this](http://learn.adafruit.com/arduino-tips-tricks-and-techniques/arduinoisp#bonus-using-with-avrdude) to burn the RHme+ firmware in your target.
 
 ###### Checking that your target is working
 Connect the target to your computer through the USB (or the UART0 is you are not using a target with USB). Open the serial port with any terminal tool and press the reset bottom in the target. Do you see garbage being send? Congrats! It is very likely that you programmed correctly the firmware. Unfortunately the first challenge you have to solve is to find how to properly communicate with the target so that garbage you see now becomes something meaningful.# RHme+ 2015
@@ -41,7 +41,7 @@ Connect the target to your computer through the USB (or the UART0 is you are not
 ## Preparing the target
 
 ###### Choosing a board
-You need to install the RHme+ firmware into a target. The "official" target for the challenge is an [Arduino nano 3.0](https://www.arduino.cc/en/Main/ArduinoBoardNano). If you don't have one, you can buy a clone in Ebay for few euros. Alternatively you can use any other development board based in the Atmel ATmega328. Many other Arduino and Arduino-based boards should work. The following is a list of Arduino targets:
+You need to install the RHme+ firmware into a target. The "official" target for the challenge is an [Arduino nano 3.0](http://www.arduino.cc/en/Main/ArduinoBoardNano). If you don't have one, you can buy a clone in Ebay for few euros. Alternatively you can use any other development board based in the Atmel ATmega328. Many other Arduino and Arduino-based boards should work. The following is a list of Arduino targets:
 
 **Tested devices**
 - Arduino Nano 3.0
@@ -59,7 +59,7 @@ You need to install the RHme+ firmware into a target. The "official" target for 
 For other Arduino-based targets, you can check the [Wikipedia](https://en.wikipedia.org/wiki/List_of_Arduino_boards_and_compatible_systems). Any board based in ATmega328P is potentially able to run the firmware unless that the UARTs or analog inputs of the ATmega are connected to another chip (e.g. a Bluetooth or Zigbee module).
 
 ###### Burning the firmware into the target
-You need to burn the file binary\ctf.hex into the ATmega overwriting Arduino bootloader. For that you need an external AVR-ISP programmer. Is up to you to find a suitable programmer and the instructions to use it. You can even use another Arduino and use it as an AVR-ISP programmer. Follow [this instructions](https://www.arduino.cc/en/Tutorial/ArduinoISP) to prepare another Arduino as a ISP programmer and follow [this](https://learn.adafruit.com/arduino-tips-tricks-and-techniques/arduinoisp#bonus-using-with-avrdude) to burn the RHme+ firmware in your target.
+You need to burn the file binary\ctf.hex into the ATmega overwriting Arduino bootloader. For that you need an external AVR-ISP programmer. Is up to you to find a suitable programmer and the instructions to use it. You can even use another Arduino and use it as an AVR-ISP programmer. Follow [this instructions](http://www.arduino.cc/en/Tutorial/ArduinoISP) to prepare another Arduino as a ISP programmer and follow [this](http://learn.adafruit.com/arduino-tips-tricks-and-techniques/arduinoisp#bonus-using-with-avrdude) to burn the RHme+ firmware in your target.
 
 ###### Checking that your target is working
 Connect the target to your computer through the USB (or the UART0 is you are not using a target with USB). Open the serial port with any terminal tool and press the reset bottom in the target. Do you see garbage being send? Congrats! It is very likely that you programmed correctly the firmware. Unfortunately the first challenge you have to solve is to find how to properly communicate with the target so that garbage you see now becomes something meaningful.
