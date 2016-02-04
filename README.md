@@ -6,7 +6,11 @@ The terms of the license can be checked here: [http://opensource.org/licenses/RP
 
 ## What is RHme+
 
-## How to play
+The RHme+ (Riscure Hack me ) is a low level hardware challenge that comes in the form of an Arduino board. It was launched during BlackHat Amsterdam in 2015. The winners of the first edition were announced on 18th of January 2015. The writeups together with the interview of the winners can be found from March 1 at the [official challenge website](www.riscure.com/challenge). Source of the challenge will be also released in March.
+ 
+Use your weapon of choice to extract the flags. We have no preference and we are curious to see where your creativity and skill will take you! Just be sure to have fun! ;-)
+We estimate the difficulty level to be moderate. If you like these challenges and you would like more, let us know. Get in touch with us via twitter (#riscure #rhme+) or send us an email at challenge. at. riscure.com
+
 
 ###### Choosing the target
 You need to install the RHme+ firmware into a target. The "official" target for the challenge is an [Arduino nano 3.0](https://www.arduino.cc/en/Main/ArduinoBoardNano). If you don't have one, you can buy a clone in ebay for few euros. Alternatively you can use any other development board based in the Atmel ATmega328. Many other Arduino and Arduino-based boards should work. The following is a list of Arduino targets:
