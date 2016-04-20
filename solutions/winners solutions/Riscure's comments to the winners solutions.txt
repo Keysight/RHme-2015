@@ -1,0 +1,37 @@
+================================  TEAM R@BBIT  ================================
+ 
+
+This is a perfect example of how difficult can be to properly protect your embedded system. Team Rabbit found a bug not introduced on purpose in the firmware. Exploiting this bug allowed them to find the encryption keys in a much easier and faster way that what we originally planned. Bravo for Team Rabbit! You really hacked us!
+
+All their write-up describes the expected attacks on the hardware but the following was completely unexpected:
+
+"After some experimentation, it was found that the memory dump contains the user key if the serial connection is closed immediately after login in as administrator.Next step was to find a delay for closing the connection that would deliver the administrator key. Just testing by hand (about 5 minutes) gave a delay of 0.01 seconds."
+
+During the login process, the three keys are being loaded to verify the different users. What Team Rabbit found is that if you reset the board in the correct moment, the RAM will contain one of the keys and you can use the vulnerability that dumps part of the memory content to get the key. By playing with the timing and resetting the chip in the correct moment, you can get the three keys. 
+
+We already considered the possibility that somebody could dump the RAM and get the encryption key, so in order to prevent it the keys are stored in flash and only loaded into RAM when needed. Once the encryption is done, the key is cleared from RAM to prevent a leak:
+
+	// Read key from flash
+	for (i = 0; i < 16; i++)
+        	ram_aes_key[i] = pgm_read_byte(key + i);
+
+	// Encrypt 
+	aes128_init(ram_aes_key, &aes_ctx);
+    	aes128_enc(aes_data, &aes_ctx, countermeasures);
+	
+	// Clear the key in RAM
+	for (i = 0; i < 16; i++)
+        	ram_aes_key[i] = 0; 
+
+However, we did not realize that the open source crypto library we used was making its own copy of the key in the RAM and that copy was not being cleared after using it:
+
+	void aes_init(const void *key, uint16_t keysize_b, aes_genctx_t *ctx)
+	{
+    		...
+    		memcpy(ctx, key, keysize_b / 8);
+		...
+	}
+
+Even if that copy of the key is cleared after using it, there is still a small windows of time between loading the key and clearing it were the attacker can reset the chip. The key would still be in RAM and the attacker could dump it.
+
+The lesson learned is clear: always initialize/clear all your variables and buffers immediately after a reset.

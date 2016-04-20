@@ -1,0 +1,61 @@
+***** 1. Find the right baudrate *****
+Used a Saleae 8 logic analyser and measured the baudrate required
+Connection speed: 1M baud
+
+Build an arduino to connect to the riscure challenge. To convert between 1Mbaud. My OSX couldn't communicate at 1M baud with the challenge.
+Later I found out that the Windows driver supports 1M baud (after adding baudrate to CoolTerm), so I could communicate directly (using Windows). 
+
+***** 2. Hack random number generator *****
+Connect pin A1 to ground
+Nonce is always:  e7212f7d
+
+***** 3. Brute force user response *****
+Just tried every combination. Used another Arduino to do this, because I didn't have 1M baud yet.
+Found: R00063b4c for the user response
+
+***** 4. Timing attack per byte *****
+Found out with logic analyser that a timing attack is possible by measuring the time between "\r\n" and "E". The time to respond to a response.
+If the least significant byte matches, the response time increases. After that we tried the second least significant byte, until we get a valid login response.
+Wrote a python script to find all the valid responses.
+Output:
+- Found valid response: R00063b4c
+  Authentication successful as user
+- Found valid response: R00798068
+  Authentication successful as privileged user
+- Found valid response: R498451d5
+  Authentication successful as administrator
+
+***** 5. Fuzzing input *****
+Invalid input, delivers some kind of memory dump
+From the main menu use V (show variables), number of variables "-1" gives some kind of dump.
+This dump also contains the user response: User authentication token      63b4c
+
+Also insert command "S" option delivers some kind of dump with invalid input, such as a very high number for the command length
+
+Also read flash config delivers some kind of dump when number of characters entered is 21
+
+***** 6. Scan memory dump for keys *****
+Simply shifting a 16 byte window over the dump and using the 16 bytes as the key to encrypt the known nonce from the hacked RNG. If the encrypted nonce matches the responses found with the known responses we have found the key.
+
+After login in as administrator, the "V"-dump revealed the key for the privileged user: "Getting closer!!"
+
+After some experimentation, it was found that the memory dump contains the user key if the serial connection is closed immediately after login in as administrator.
+
+Next step was to find a delay for closing the connection that would deliver the administrator key. Just testing by hand (about 5 minutes) gave a delay of 0.01 seconds.
+
+Results and final flag:
+User key: "Riscure is cool!"
+Hex user key: 5269736375726520697320636f6f6c21
+
+Admin key: "RHme+ C0n7ac7_u5"
+Hex admin key: 52486d652b2043306e376163375f7535
+
+Privileged user key: "Getting closer!!"
+Hex privileged key: 47657474696e6720636c6f7365722121
+
+***** 7. Failed attempts *****
+- Connecting the challenge to the ICSP header via JTAG ICE II. Tried reading the flash and eeprom.
+- Debugging via the ICSP header.
+- Measuring all the pins with logic analyser, to see if some data comes out on pins
+- Shuffling the bits in the 16 byte memory window to test for keys (reverse bytes, reverse bits, reverse nibbles and combinations)
+- Even more input fuzzing

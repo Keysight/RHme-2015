@@ -72,6 +72,6 @@ Ruser= AES(P,User Key) &Muser = 00033695
 * Write us to let us know your impressions about the challenge!!!
 
 ## Solutions ##
-The writeups, scripts and setup photos of the challenge winners aswell as the "official" solution proposed by the challenge designers are available in the solutions\ folder. 
+The write-ups, scripts and setup photos of the challenge winners as well as the "official" solution proposed by the challenge designers are available in the solutions\ folder. 
 
 At 20th of April 2016, only the Team R@abbit solutions is being published. The rest of the solutions will be published soon.
