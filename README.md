@@ -71,3 +71,7 @@ Ruser= AES(P,User Key) &Muser = 00033695
 * There are many secondary "assets" you can try to obtain: login as User, login as Admin, recovering the User key, dumping the binary, gaining runtime control, affecting the RNG, etc. You don't need to get all these assets in order to extract the Admin Key, but you will have fun doing it!
 * Write us to let us know your impressions about the challenge!!!
 
+## Solutions ##
+The writeups, scripts and setup photos of the challenge winners aswell as the "official" solution proposed by the challenge designers are available in the solutions\ folder. 
+
+At 20th of April 2016, only the Team R@abbit solutions is being published. The rest of the solutions will be published soon.
