@@ -1,0 +1,4 @@
+SECTIONS
+{
+    .flagsection = 0x3500;
+}

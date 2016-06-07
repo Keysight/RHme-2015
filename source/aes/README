@@ -1,0 +1,6 @@
+This is an implementation from
+    https://git.cryptolib.org/avr-crypto-lib.git
+with the exact required sources for each version of aes listed at
+    http://avrcryptolib.das-labor.org/trac/wiki/AES
+
+The second link also includes a small tutorial :)

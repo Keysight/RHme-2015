@@ -1,0 +1,7 @@
+The srand and rand functions are available from avr-libc, but the problem is getting a good seed for the random,
+hopefully one that is different each time the board is booted.
+
+Important reading material:
+    http://maxembedded.com/2011/06/avr-basics/
+    http://maxembedded.com/2011/06/port-operations-in-avr/
+    http://maxembedded.com/2011/06/the-adc-of-the-avr/

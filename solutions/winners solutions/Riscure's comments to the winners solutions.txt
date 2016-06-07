@@ -35,3 +35,18 @@ However, we did not realize that the open source crypto library we used was maki
 Even if that copy of the key is cleared after using it, there is still a small windows of time between loading the key and clearing it were the attacker can reset the chip. The key would still be in RAM and the attacker could dump it.
 
 The lesson learned is clear: always initialize/clear all your variables and buffers immediately after a reset.
+
+
+
+
+
+
+=========================  STARE TEAM @ CISCO SPVSS  ==========================
+
+The write-up sent by the STARE team is the complete solution for the challenge. They found and exploited all the vulnerabilities we introduced (on purpose) in the code. They even succeeded in using an EM glitch to dump the keys. There is not too much to add to their write up except "GOOD JOB TEAM STARE!".
+
+Team STARE enjoyed so much the RHme challenge that they talked about it in the BSides Knoxville 2016: 
+
+http://bsidesknoxville2016.sched.org/event/6tCk/how-we-pwned-riscures-rhme-challenge-in-two-days
+
+Thanks STARE team! We are glad you enjoyed the challenge and we will see you in the RHme 2016.

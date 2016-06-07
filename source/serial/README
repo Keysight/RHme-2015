@@ -1,0 +1,9 @@
+The usartx code is based on a library which is available online at:
+http://www.seanet.com/~karllunt/atxmegasource.html
+
+The raw uart code is based on a docs available online in the datasheet
+and some extra c magic from yours truly. Some very nice explanations at:
+https://hekilledmywire.wordpress.com/2011/01/05/using-the-usartserial-tutorial-part-2/
+
+The software uart code is from avrfreaks
+http://www.avrfreaks.net/forum/code-c-avr-gcc-software-transmit-only-uart
